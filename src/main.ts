@@ -3,10 +3,12 @@ import App from './App.vue';
 import router from './router';
 import store from './stroe';
 import * as elementUI from 'element-ui';
+import '@/styles/index.scss' // global css
+
 import './registerServiceWorker';
 
 Vue.config.productionTip = false;
-Vue.use(elementUI)
+Vue.use(elementUI);
 new Vue({
   router,
   store,
