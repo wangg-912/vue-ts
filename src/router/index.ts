@@ -23,9 +23,9 @@ export const constantRoutes: RouteConfig[] = [
     ]
   },
   {
-    path: "about",
+    path: "/about",
     component: Layout,
-    redirect: "/about",
+    redirect: "/about/about",
     children: [
       {
         path: "about",
