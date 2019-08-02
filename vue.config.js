@@ -3,7 +3,7 @@ const path = require('path')
 const resolve = dir => {
     return path.join(__dirname, dir)
 }
-const name = 'vau for typescript';
+const name = 'Vue For TYypescript';
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production' ? '/ts/' : '/',
     lintOnSave: process.env.NODE_ENV === 'development',
@@ -33,7 +33,8 @@ module.exports = {
             preProcessor: 'scss',
             patterns: [
                 path.resolve(__dirname, 'src/styles/variables.scss'),
-                path.resolve(__dirname, 'src/styles/mixin.scss')
+                path.resolve(__dirname, 'src/styles/mixin.scss'),
+                /* path.resolve(__dirname, '~material-design-icons-iconfont/dist/fonts/') */
             ]
         }
     },
@@ -41,6 +42,9 @@ module.exports = {
         // provide the app's title in webpack's name field, so that
         // it can be accessed in index.html to inject the correct title.
         config.set('name', name)
+        config.resolve.alias
+            .set('@', resolve('src')) // key,value自行定义，比如.set('@@', resolve('src/components'))
+            .set('_c', resolve('src/components'))
 
         // https://webpack.js.org/configuration/devtool/#development
         config

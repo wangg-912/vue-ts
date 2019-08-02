@@ -9,14 +9,14 @@
           :index="resolvePath(theOnlyOneChild.path)"
           :class="{'submenu-title-noDropdown': isFirstLevel}"
         >
-          <i v-if="theOnlyOneChild.meta.icon" :class="theOnlyOneChild.meta.icon"></i>
+          <i v-if="theOnlyOneChild.meta.icon" class="material-icons">{{theOnlyOneChild.meta.icon}}</i>
           <span v-if="theOnlyOneChild.meta.title" slot="title">{{ theOnlyOneChild.meta.title }}</span>
         </el-menu-item>
       </sidebar-item-link>
     </template>
     <el-submenu v-else :index="resolvePath(item.path)" popper-append-to-body>
       <template slot="title">
-        <i v-if="item.meta && item.meta.icon" :class="item.meta.icon"></i>
+        <i v-if="item.meta && item.meta.icon" class="material-icons">{{item.meta.icon}}</i>
         <span v-if="item.meta && item.meta.title" slot="title">{{item.meta.title}}</span>
       </template>
       <template v-if="item.children">
@@ -149,14 +149,3 @@ export default class extends Vue {
 }
 </style>
 
-<style lang="scss" scoped>
-.svg-icon {
-  margin-right: 16px;
-}
-
-.simple-mode {
-  .svg-icon {
-    margin-left: 20px;
-  }
-}
-</style>

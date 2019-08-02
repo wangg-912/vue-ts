@@ -16,7 +16,7 @@ export const constantRoutes: RouteConfig[] = [
         name: "home",
         meta: {
           title: "首页",
-          icon: "el-icon-menu",
+          icon: "home",
           affix: true
         }
       }
@@ -33,7 +33,7 @@ export const constantRoutes: RouteConfig[] = [
         name: "about",
         meta: {
           title: "关于",
-          icon: "el-icon-service",
+          icon: "account_circle",
           affix: true
         }
       }

@@ -3,6 +3,7 @@ import Vue from "vue";
 import * as elementUI from "element-ui";
 import "@/styles/element-varibles.scss";
 import "@/styles/index.scss";
+import "material-design-icons-iconfont/dist/material-design-icons.css";
 
 import App from "./App.vue";
 import router from "@/router/index";

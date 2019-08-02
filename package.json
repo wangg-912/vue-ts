@@ -17,6 +17,8 @@
         "eslint": "^6.1.0",
         "eslint-plugin-vue": "^5.2.3",
         "js-cookie": "^2.2.0",
+        "material-design-icons-iconfont": "^5.0.1",
+        "path-to-regexp": "^3.0.0",
         "register-service-worker": "^1.6.2",
         "sass": "^1.22.7",
         "sass-loader": "^7.1.0",

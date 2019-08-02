@@ -101,10 +101,8 @@
 
             .el-tooltip {
                 padding: 0 !important;
+                text-align: center;
 
-                .svg-icon {
-                    margin-left: 20px;
-                }
             }
         }
 
@@ -113,10 +111,6 @@
 
             &>.el-submenu__title {
                 padding: 0 !important;
-
-                .svg-icon {
-                    margin-left: 20px;
-                }
 
                 .el-submenu__icon-arrow {
                     display: none;

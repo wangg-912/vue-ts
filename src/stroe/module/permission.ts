@@ -49,7 +49,7 @@ class Permission extends VuexModule implements IPermissionState {
   }
 
   @Action
-  GenerateRoutes(roles: string[]) {
+  GenerateRoutes() {
     let accessedRoutes;
     accessedRoutes = asyncRoutes;
     this.SET_ROUTES(accessedRoutes);
