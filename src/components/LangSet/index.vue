@@ -1,0 +1,31 @@
+<template>
+  <el-dropdown trigger="click" class="international" @command="handleSetLanguage">
+    <div>
+      <i class="material-icons">language</i>
+    </div>
+    <el-dropdown-menu slot="dropdown">
+      <el-dropdown-item :disabled="language==='zh'" command="zh">中文</el-dropdown-item>
+      <el-dropdown-item :disabled="language==='en'" command="en">英文</el-dropdown-item>
+    </el-dropdown-menu>
+  </el-dropdown>
+</template>
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import { AppModule } from "@/stroe/module/app";
+@Component({
+  name: "LanguageSet"
+})
+export default class extends Vue {
+  get language() {
+    return AppModule.language;
+  }
+  private handleSetLanguage(lang: string) {
+    this.$i18n.locale = lang;
+    AppModule.SetLanguage(lang);
+    this.$message({
+      message: "设置语言成功！",
+      type: "success"
+    });
+  }
+}
+</script>
