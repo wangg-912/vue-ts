@@ -19,7 +19,7 @@ import { Component } from "vue-property-decorator";
 import { mixins } from "vue-class-component";
 import { DeviceType, AppModule } from "@/stroe/module/app";
 import { SettingsModule } from "@/stroe/module/setting";
-import { AppMain, Sidebar, Navbar } from "./components";
+import { AppMain, Sidebar, Navbar, TagsView } from "./components";
 import resizeMixin from "./mixin/resizeMixin";
 
 @Component({
@@ -27,7 +27,8 @@ import resizeMixin from "./mixin/resizeMixin";
   components: {
     AppMain,
     Sidebar,
-    Navbar
+    Navbar,
+    TagsView
   }
 })
 export default class extends mixins(resizeMixin) {

@@ -9,10 +9,14 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { TagsViewModule } from "@/stroe/module/tagviews";
 @Component({
   name: "AppMain"
 })
 export default class extends Vue {
+  get cachedViews() {
+    return TagsViewModule.cachedviews;
+  }
   get key() {
     return this.$route.path;
   }

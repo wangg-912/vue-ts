@@ -6,7 +6,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 
-import { getUseInfo, updateUser, getUsers } from "@/api/app";
+import { getUserInfo } from "@/api/app";
 
 @Component
 export default class About extends Vue {
@@ -15,10 +15,10 @@ export default class About extends Vue {
     this.init();
   }
   private init() {
-    getUseInfo("123")
+    getUserInfo("123")
       .then((res: any) => {})
       .catch((error: any) => {});
-    updateUser({
+    /* updateUser({
       name: "123",
       age: "12"
     })
@@ -27,7 +27,7 @@ export default class About extends Vue {
 
     getUsers({ name: "123", age: "12", address: "北京成都" })
       .then((res: any) => {})
-      .catch((error: any) => {});
+      .catch((error: any) => {}); */
   }
 }
 </script>

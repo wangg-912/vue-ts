@@ -1,10 +1,10 @@
 import Vue from "vue";
-import Router, { RouteConfig } from "vue-router";
+import Router, {RouteConfig} from "vue-router";
 import Layout from "@/layout/index.vue";
 
 Vue.use(Router);
 
-export const constantRoutes: RouteConfig[] = [
+export const constantRoutes : RouteConfig[] = [
   {
     path: "/",
     component: Layout,
@@ -12,7 +12,7 @@ export const constantRoutes: RouteConfig[] = [
     children: [
       {
         path: "home",
-        component: () => import("@/views/Home.vue"),
+        component: () => import ("@/views/Home.vue"),
         name: "home",
         meta: {
           title: "首页",
@@ -21,42 +21,39 @@ export const constantRoutes: RouteConfig[] = [
         }
       }
     ]
-  },
-  {
+  }, {
     path: "/about",
     component: Layout,
-    redirect: "/about/about",
+    redirect: "/about/index",
     children: [
       {
-        path: "about",
-        component: () => import("@/views/About.vue"),
-        name: "about",
+        path: "index",
+        component: () => import ("@/views/About.vue"),
+        name: "index",
         meta: {
           title: "关于",
-          icon: "account_circle",
-          affix: true
+          icon: "account_circle"
         }
       }
     ]
   }
 ];
 
-export const asyncRoutes: RouteConfig[] = [];
+export const asyncRoutes : RouteConfig[] = [];
 
-const createRouter = () =>
-  new Router({
-    mode: "history", // Disabled due to Github Pages doesn't support this,
-    // enable this if you need.
-    scrollBehavior: (to, from, savedPosition) => {
-      if (savedPosition) {
-        return savedPosition;
-      } else {
-        return { x: 0, y: 0 };
-      }
-    },
-    base: process.env.BASE_URL,
-    routes: constantRoutes
-  });
+const createRouter = () => new Router({
+  mode: "history", // Disabled due to Github Pages doesn't support this,
+  // enable this if you need.
+  scrollBehavior: (to, from, savedPosition) => {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return {x: 0, y: 0};
+    }
+  },
+  base: process.env.BASE_URL,
+  routes: constantRoutes
+});
 
 const router = createRouter();
 
