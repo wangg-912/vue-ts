@@ -97,6 +97,47 @@ div:focus {
     }
 }
 
+$primary: #1890ff;
+$success: #13ce66;
+$warning: #FFBA00;
+$danger: #ff4949;
+$info: #5d5d5d;
+$regular: #1f2d3d;
+$light: #dfe4ed;
+$lighter: #e6ebf5;
+
+.clr-primary {
+    color: $primary
+}
+
+.clr-success {
+    color: $success
+}
+
+.clr-warning {
+    color: $warning
+}
+
+.clr-danger {
+    color: $danger
+}
+
+.clr-info {
+    color: $info
+}
+
+.clr-regular {
+    color: $regular
+}
+
+.clr-light {
+    color: $light
+}
+
+.clr-lighter {
+    color: $lighter
+}
+
 aside {
     background: #eef1f6;
     padding: 8px 24px;
@@ -196,6 +237,14 @@ aside {
     vertical-align: middle;
 }
 
+.icon-x1-small {
+    font-size: 1em !important
+}
+
+.icon-x1 {
+    font-size: 1.25em !important
+}
+
 .icon-x2-small {
     font-size: 1.75em !important
 }
@@ -214,4 +263,8 @@ aside {
 
 .icon-x3 {
     font-size: 3em !important
+}
+
+.icon-x3-big {
+    font-size: 3.75em !important
 }

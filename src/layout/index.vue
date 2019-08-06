@@ -23,6 +23,7 @@ import { AppMain, Sidebar, Navbar } from "./components";
 import resizeMixin from "./mixin/resizeMixin";
 
 @Component({
+  name: "Layout",
   components: {
     AppMain,
     Sidebar,
