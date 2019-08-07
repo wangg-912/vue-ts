@@ -10,16 +10,56 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+
+const tagSpacing = 4;
 @Component({
   name: "ScrollPanel"
 })
-const tagSpacing = 4;
 export default class extends Vue {
   private handleScroll(e: MouseWheelEvent) {
     const eventDelta = (e as any).wheelDelta || -e.deltaY * 40;
-    const scrollConatiner = this.$refs.scrollContainer;
-    const scrollWrapper = scrollConatiner.$refs.wrap;
+    const scrollConatiner = this.$refs.scrollContainer as Vue;
+    const scrollWrapper = scrollConatiner.$refs.wrap as HTMLElement;
     scrollWrapper.scrollLeft = scrollWrapper.scrollLeft + eventDelta / 4;
+  }
+  moveToTarget(currentTag: HTMLElement) {
+    const scrollContainer = this.$refs.scrollContainer as Vue;
+    const container = scrollContainer.$el as HTMLElement; //tag 容器
+    const containerWidth = container.offsetWidth; //tags容器的宽度
+    const scrollWrapper = scrollContainer.$refs.wrap as HTMLElement; //scroll panel隐藏组件
+
+    const tagList = this.$parent.$refs.tag as any[]; //获取tag队列
+    let firstTag = null;
+    let lastTag = null;
+    /**
+     * 找到第一个和最后一个tag
+     */
+    if (tagList.length > 0) {
+      firstTag = tagList[0];
+      lastTag = tagList[tagList.length - 1];
+    }
+    if (firstTag == currentTag) {
+      scrollWrapper.scrollLeft = 0;
+    } else if (lastTag === currentTag) {
+      scrollWrapper.scrollLeft = scrollWrapper.scrollWidth - containerWidth;
+    } else {
+      //找到当前节点的前一个tag和后一个tag
+      const currentIndex = tagList.findIndex(item => item == currentTag);
+      const prevTag = tagList[currentIndex - 1];
+      const nextTag = tagList[currentIndex + 1];
+
+      // tag的居左距离在nextTag之后
+      const afterNextTagOffsetLeft =
+        nextTag.$el.offsetLeft + nextTag.$el.offsetWidth + tagSpacing;
+      // tag的居左距离在nextTag之前
+      const beforePrevTagOffsetLeft = prevTag.$el.offsetLeft - tagSpacing;
+
+      if (afterNextTagOffsetLeft > scrollWrapper.scrollLeft + containerWidth) {
+        scrollWrapper.scrollLeft = afterNextTagOffsetLeft - containerWidth;
+      } else if (beforePrevTagOffsetLeft < scrollWrapper.scrollLeft) {
+        scrollWrapper.scrollLeft = beforePrevTagOffsetLeft;
+      }
+    }
   }
 }
 </script>

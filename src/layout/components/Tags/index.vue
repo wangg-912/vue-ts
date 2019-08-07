@@ -14,7 +14,7 @@
       >
         {{ $t(tag.meta.title) }}
         <span
-          v-if="!tag.meta.affix"
+          v-if="!(tag.meta&&tag.meta.affix)"
           class="el-icon-close"
           @click.prevent.stop="closeSelectedTag(tag)"
         />
@@ -24,7 +24,7 @@
       <li @click="refreshTag(selectedTag)">{{$t('tagsView.refresh')}}</li>
       <li
         v-if="!(selectedTag.meta && selectedTag.meta.affix)"
-        @click="closeCurrentTag(selectedTag)"
+        @click="closeSelectedTag(selectedTag)"
       >{{$t('tagsView.close')}}</li>
       <li @click="closeOthersTags">{{$t('tagsView.closeOthers')}}</li>
       <li @click="closeAllTags(selectedTag)">{{$t('tagsView.closeAll')}}</li>
@@ -56,6 +56,20 @@ export default class extends Vue {
   }
   get routes() {
     return PermissionModule.routes;
+  }
+
+  @Watch("$route")
+  private onRouteChange() {
+    this.addTags();
+    this.moveToCurrentTag();
+  }
+  @Watch("visible")
+  private onVisibleChange(value: boolean) {
+    if (value) {
+      document.body.addEventListener("click", this.closeMenu);
+    } else {
+      document.body.removeEventListener("click", this.closeMenu);
+    }
   }
 
   mounted() {
@@ -113,8 +127,24 @@ export default class extends Vue {
    * 当前tag添加标识
    */
   private isActive(route: ITagsView) {
-    return (route.path = this.$route.path);
+    return route.path == this.$route.path;
   }
+  private moveToCurrentTag() {
+    const tags = this.$refs.tag as any[];
+    this.$nextTick(() => {
+      for (const tag of tags) {
+        if ((tag.to as ITagsView).path == this.$route.path) {
+          (this.$refs.scrollPane as ScrollPanel).moveToTarget(tag as any);
+          // 当query 不同的情况，更新tag
+          if ((tag.to as ITagsView).fullPath !== this.$route.fullPath) {
+            TagsViewModule.updateVisitedView(this.$route);
+          }
+          break;
+        }
+      }
+    });
+  }
+
   /**
    * 刷新tag
    */
@@ -130,15 +160,46 @@ export default class extends Vue {
   /**
    * 关闭当前tag
    */
-  private closeSelectedTag(tag: ITagsView) {}
+  private closeSelectedTag(tag: ITagsView) {
+    TagsViewModule.delView(tag);
+    if (this.isActive(tag)) {
+      this.toLastTag(TagsViewModule.visitedviews, tag);
+    }
+  }
   /**
    * 关闭其他tag
    */
-  private closeOthersTags() {}
+  private closeOthersTags() {
+    this.$router.push(this.selectedTag);
+    TagsViewModule.delOthersViews(this.selectedTag);
+    this.moveToCurrentTag();
+  }
+
   /**
    * 关闭所有tag
    */
-  private closeAllTags(view: ITagsView) {}
+  private closeAllTags(view: ITagsView) {
+    TagsViewModule.delAllViews();
+    if (this.affixTags.some(tag => tag.path === this.$route.path)) {
+      return;
+    }
+    this.toLastTag(TagsViewModule.visitedviews, view);
+  }
+
+  /**
+   * 找到当前关闭的tag的前一个tag
+   */
+  private toLastTag(visitedviews: ITagsView[], tag: ITagsView) {
+    const latestView = visitedviews.slice(-1)[0];
+    if (latestView) {
+      this.$router.push(latestView);
+    } else {
+      tag.name == "home"
+        ? this.$router.replace({ path: tag.fullPath })
+        : this.$router.push("/");
+    }
+  }
+
   /**
    * 打开右键菜单
    */
