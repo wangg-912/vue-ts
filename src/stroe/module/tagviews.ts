@@ -22,11 +22,7 @@ class TagsView extends VuexModule implements ITagsViewsState {
             return
         this
             .visitedviews
-            .push(Object.assign({}, view, {
-                meta: {
-                    title: view.meta.title || "未命名"
-                }
-            }))
+            .push(Object.assign({}, view))
     }
     /**
      * 新增tagView的视图名称

@@ -14,8 +14,8 @@
       >
         {{ $t(tag.meta.title) }}
         <span
-          v-if="!(tag.meta&&tag.meta.affix)"
           class="el-icon-close"
+          v-if="!(tag.meta&&tag.meta.affix)"
           @click.prevent.stop="closeSelectedTag(tag)"
         />
       </router-link>
@@ -23,7 +23,7 @@
     <ul v-show="visible" :style="{left:left+'px',top:top+'px'}" class="contextmenu">
       <li @click="refreshTag(selectedTag)">{{$t('tagsView.refresh')}}</li>
       <li
-        v-if="!(selectedTag.meta && selectedTag.meta.affix)"
+        v-if="!(selectedTag.meta&&selectedTag.meta.affix)"
         @click="closeSelectedTag(selectedTag)"
       >{{$t('tagsView.close')}}</li>
       <li @click="closeOthersTags">{{$t('tagsView.closeOthers')}}</li>
