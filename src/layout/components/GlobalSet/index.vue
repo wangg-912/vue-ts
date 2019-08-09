@@ -26,10 +26,10 @@
         <el-switch v-model="fixedHeader" class="drawer-switch" />
       </div>
 
-      <div class="drawer-item">
+      <!-- <div class="drawer-item">
         <span>{{ $t('settings.sidebarTextTheme') }}</span>
         <el-switch v-model="sidebarTextTheme" class="drawer-switch" />
-      </div>
+      </div>-->
     </div>
   </div>
 </template>

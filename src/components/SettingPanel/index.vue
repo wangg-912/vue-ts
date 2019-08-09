@@ -123,22 +123,22 @@ export default class extends Vue {
 }
 
 .handle-button {
-  width: 48px;
-  height: 48px;
+  width: 32px;
+  height: 32px;
   position: absolute;
-  left: -48px;
+  left: -32px;
   text-align: center;
   font-size: 24px;
-  border-radius: 6px 0 0 6px !important;
+  border-radius: 8px 0 0 8px !important;
   z-index: 0;
   cursor: pointer;
   pointer-events: auto;
   color: #fff;
-  line-height: 48px;
+  line-height: 32px;
 
   i {
-    font-size: 24px;
-    line-height: 48px;
+    font-size: 20px;
+    line-height: 32px;
   }
 }
 </style>
