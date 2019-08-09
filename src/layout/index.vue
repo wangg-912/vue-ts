@@ -8,9 +8,9 @@
         <tags-view v-if="showTagsView" />
       </div>
       <app-main />
-      <right-panel v-if="showSettings">
-        <settings />
-      </right-panel>
+      <setting-panel v-if="showSettings">
+        <global-set />
+      </setting-panel>
     </div>
   </div>
 </template>
@@ -19,8 +19,9 @@ import { Component } from "vue-property-decorator";
 import { mixins } from "vue-class-component";
 import { DeviceType, AppModule } from "@/stroe/module/app";
 import { SettingsModule } from "@/stroe/module/setting";
-import { AppMain, Sidebar, Navbar, TagsView } from "./components";
+import { AppMain, Sidebar, Navbar, TagsView, GlobalSet } from "./components";
 import resizeMixin from "./mixin/resizeMixin";
+import SettingPanel from "@/components/SettingPanel/index.vue";
 
 @Component({
   name: "Layout",
@@ -28,7 +29,9 @@ import resizeMixin from "./mixin/resizeMixin";
     AppMain,
     Sidebar,
     Navbar,
-    TagsView
+    TagsView,
+    SettingPanel,
+    GlobalSet
   }
 })
 export default class extends mixins(resizeMixin) {
