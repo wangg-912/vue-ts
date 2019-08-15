@@ -4,195 +4,163 @@
 
 ## 项目结构
 
-│ .browserslistrc
-│ .env.development
-│ .env.production
-│ .eslintrc.js
-│ .gitignore
-│ babel.config.js
-│ package.json
-│ postcss.config.js
-│ README.md
-│ tree.text
-│ tsconfig.json
-│ vue.config.js
-│ yarn-error.log
+│ .browserslistrc  
+│ .env.development  
+│ .env.production  
+│ .eslintrc.js  
+│ .gitignore  
+│ babel.config.js  
+│ package.json  
+│ postcss.config.js  
+│ README.md  
+│ tree.text  
+│ tsconfig.json  
+│ vue.config.js  
+│ yarn-error.log  
 │ yarn.lock  
-├─public
-│ │ favicon.ico
-│ │ index.html
-│ │ manifest.json
-│ │ robots.txt
-│ │  
-│ └─img
+├─public  
+│ │ favicon.ico  
+│ │ index.html  
+│ │ manifest.json  
+│ │ robots.txt  
+│ └─img  
 │ └─icons
-│ android-chrome-192x192.png
-│ android-chrome-512x512.png
-│ apple-touch-icon-120x120.png
-│ apple-touch-icon-152x152.png
-│ apple-touch-icon-180x180.png
-│ apple-touch-icon-60x60.png
-│ apple-touch-icon-76x76.png
-│ apple-touch-icon.png
-│ favicon-16x16.png
-│ favicon-32x32.png
-│ msapplication-icon-144x144.png
-│ mstile-150x150.png
-│ safari-pinned-tab.svg
-│  
-├─src
-│ │ App.vue
-│ │ favicon.ico
-│ │ main.ts
-│ │ registerServiceWorker.ts
-│ │ settings.ts
-│ │ shims-tsx.d.ts
-│ │ shims-vue.d.ts
+├─src  
+│ │ App.vue  
+│ │ favicon.ico  
+│ │ main.ts  
+│ │ registerServiceWorker.ts  
+│ │ settings.ts  
+│ │ shims-tsx.d.ts  
+│ │ shims-vue.d.ts  
 │ │  
-│ ├─api
+│ ├─api  
 │ │ app.ts
 │ │  
-│ ├─assets
-│ │ │ logo.png
+│ ├─assets  
+│ │ │ logo.png  
 │ │ │  
-│ │ └─404
-│ │ 404.svg
-│ │ Crocodile.jpg
-│ │ Crocodile.mp4
-│ │ Crocodile.ogv
-│ │ Crocodile.webm
+│ │ └─404  
+│ │ 404.svg  
+│ │ Crocodile.jpg  
+│ │ Crocodile.mp4  
+│ │ Crocodile.ogv  
+│ │ Crocodile.webm  
 │ │  
-│ ├─components
-│ │ ├─Breadcrumb
-│ │ │ index.vue
+│ ├─components  
+│ │ ├─Breadcrumb  
+│ │ │ index.vue  
 │ │ │  
-│ │ ├─Hamburger
-│ │ │ index.vue
+│ │ ├─Hamburger  
+│ │ │ index.vue  
 │ │ │  
-│ │ ├─LangSet
-│ │ │ index.vue
+│ │ ├─LangSet  
+│ │ │ index.vue  
 │ │ │  
-│ │ ├─Screenfull
-│ │ │ index.vue
+│ │ ├─Screenfull  
+│ │ │ index.vue  
 │ │ │  
-│ │ ├─SettingPanel
-│ │ │ index.vue
+│ │ ├─SettingPanel  
+│ │ │ index.vue  
 │ │ │  
-│ │ ├─SizeSet
-│ │ │ index.vue
+│ │ ├─SizeSet  
+│ │ │ index.vue  
 │ │ │  
-│ │ └─ThemeConfig
-│ │ index.vue
+│ │ └─ThemeConfig  
+│ │ index.vue  
 │ │  
-│ ├─config
-│ │ index.ts
+│ ├─config  
+│ │ index.ts  
 │ │  
-│ ├─lang
-│ │ en.ts
-│ │ index.ts
-│ │ zh.ts
+│ ├─lang  
+│ │ en.ts  
+│ │ index.ts  
+│ │ zh.ts  
 │ │  
-│ ├─layout
-│ │ │ index.vue
+│ ├─layout  
+│ │ │ index.vue  
 │ │ │  
-│ │ ├─components
-│ │ │ │ AppMain.vue
-│ │ │ │ index.ts
+│ │ ├─components  
+│ │ │ │ AppMain.vue  
+│ │ │ │ index.ts  
 │ │ │ │  
-│ │ │ ├─GlobalSet
-│ │ │ │ index.vue
+│ │ │ ├─GlobalSet  
+│ │ │ │ index.vue  
 │ │ │ │  
-│ │ │ ├─Navbar
-│ │ │ │ index.vue
+│ │ │ ├─Navbar  
+│ │ │ │ index.vue  
 │ │ │ │  
-│ │ │ ├─Sidebar
-│ │ │ │ index.vue
-│ │ │ │ SidebarItem.vue
-│ │ │ │ SidebarItemLink.vue
-│ │ │ │ SidebarLogo.vue
+│ │ │ ├─Sidebar  
+│ │ │ │ index.vue  
+│ │ │ │ SidebarItem.vue  
+│ │ │ │ SidebarItemLink.vue  
+│ │ │ │ SidebarLogo.vue  
 │ │ │ │  
-│ │ │ └─Tags
-│ │ │ index.vue
-│ │ │ ScrollPanel.vue
+│ │ │ └─Tags  
+│ │ │ index.vue  
+│ │ │ ScrollPanel.vue  
 │ │ │  
-│ │ └─mixin
-│ │ resizeMixin.ts
+│ │ └─mixin  
+│ │ resizeMixin.ts  
 │ │  
-│ ├─router
-│ │ index.ts
+│ ├─router  
+│ │ index.ts  
 │ │  
-│ ├─stroe
-│ │ │ index.ts
-│ │ │  
-│ │ └─module
-│ │ app.ts
-│ │ permission.ts
-│ │ setting.ts
-│ │ tagviews.ts
-│ │ user.ts
+│ ├─stroe  
+│ │ │ index.ts  
+│ │ └─module  
+│ │ app.ts  
+│ │ permission.ts  
+│ │ setting.ts  
+│ │ tagviews.ts  
+│ │ user.ts  
+│ ├─styles  
+│ │ buttons.scss  
+│ │ common.scss  
+│ │ element-varibles.scss  
+│ │ index.scss  
+│ │ mixin.scss  
+│ │ sidebar.scss  
+│ │ transition.scss  
+│ │ variables.scss  
+│ ├─utils  
+│ │ axios.request.ts  
+│ │ commit.ts  
+│ │ cookies.ts  
+│ │ validate.ts  
+│ └─views  
+│ │ About.vue  
+│ │ Home.vue  
 │ │  
-│ ├─styles
-│ │ buttons.scss
-│ │ common.scss
-│ │ element-varibles.scss
-│ │ index.scss
-│ │ mixin.scss
-│ │ sidebar.scss
-│ │ transition.scss
-│ │ variables.scss
-│ │  
-│ ├─utils
-│ │ axios.request.ts
-│ │ commit.ts
-│ │ cookies.ts
-│ │ validate.ts
-│ │  
-│ └─views
-│ │ About.vue
-│ │ Home.vue
-│ │  
-│ └─404
-│ Page404.vue
+│ └─404  
+│ Page404.vue  
 │  
-├─tests
-│ └─unit
-│ example.spec.ts
+├─tests  
+│ └─unit  
+│ example.spec.ts  
 │  
-└─webApp
-│ favicon.ico
-│ index.html
-│ manifest.json
-│ precache-manifest.30dcc2ea0e1c28f9f87a96ab1ee3e4a6.js
-│ robots.txt
-│ service-worker.js
+└─webApp  
+│ favicon.ico  
+│ index.html  
+│ manifest.json  
+│ precache-manifest.30dcc2ea0e1c28f9f87a96ab1ee3e4a6.js  
+│ robots.txt  
+│ service-worker.js  
 │  
- ├─assets
-│ ├─css
-│ │ app.fbe370ba.css
+ ├─assets  
+│ ├─css  
+│ │ app.fbe370ba.css  
 │ │  
- │ ├─img
-│ │ logo.82b9c7a5.png
+ │ ├─img  
+│ │ logo.82b9c7a5.png  
 │ │  
- │ └─js
-│ about.fee61e86.js
-│ app.8d2ad3f2.js
-│ chunk-vendors.137a8fe4.js
+ │ └─js  
+│ about.fee61e86.js  
+│ app.8d2ad3f2.js  
+│ chunk-vendors.137a8fe4.js  
 │  
- └─img
+ └─img  
 └─icons
-android-chrome-192x192.png
-android-chrome-512x512.png
-apple-touch-icon-120x120.png
-apple-touch-icon-152x152.png
-apple-touch-icon-180x180.png
-apple-touch-icon-60x60.png
-apple-touch-icon-76x76.png
-apple-touch-icon.png
-favicon-16x16.png
-favicon-32x32.png
-msapplication-icon-144x144.png
-mstile-150x150.png
-safari-pinned-tab.svg
 
 ## Project setup
 
