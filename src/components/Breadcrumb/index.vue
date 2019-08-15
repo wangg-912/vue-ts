@@ -59,11 +59,14 @@ export default class extends Vue {
 
   private handleLink(item: any) {
     const { redirect, path } = item;
+    debugger;
     if (redirect) {
       this.$router.push(item);
       return;
     }
-    this.$router.push(this.pathCompile(path));
+    this.$router.push(
+      this.pathCompile(path) === "home" ? "/" : this.pathCompile(path)
+    );
   }
 
   created() {

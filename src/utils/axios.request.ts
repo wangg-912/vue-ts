@@ -70,8 +70,14 @@ class HttpRequest {
         if (error && error.request) {
           let status = error.request.status;
           switch (status) {
+            case 401:
+              Message({message: "接口配置未经授权！", type: "error", duration: 3000});
+              break;
             case 404:
               Message({message: "服务端接口未找到！", type: "error", duration: 3000});
+              break;
+            case 415:
+              Message({message: "HTTP协议不匹配，请确认！", type: "error", duration: 3000});
               break;
             case 500:
               Message({message: "服务器未启动！", type: "error", duration: 3000});

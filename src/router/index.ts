@@ -36,6 +36,12 @@ export const constantRoutes : RouteConfig[] = [
         }
       }
     ]
+  }, {
+    path: '/404',
+    component: () => import ('@/views/404/Page404.vue'),
+    meta: {
+      hidden: true
+    }
   }
 ];
 
