@@ -1,8 +1,8 @@
 # vue-ts
 
-## 基于 typescript 3.4.3、Vue Cli3.x、axios、element-ui 为基础项。实现国际化，全|缩屏，全局控件大小等系统管理平台。
+### 基于 typescript 3.4.3、Vue Cli3.x、axios、element-ui 为基础项。实现国际化，全|缩屏，全局控件大小等系统管理平台。
 
-## 项目结构
+### 项目结构
 
 │ .browserslistrc  
 │ .env.development  
