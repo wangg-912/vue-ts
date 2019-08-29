@@ -135,6 +135,7 @@ export default class extends Vue {
 
       & > .el-submenu__title {
         padding: 0px !important;
+        text-align: center;
 
         .el-submenu__icon-arrow {
           display: none;

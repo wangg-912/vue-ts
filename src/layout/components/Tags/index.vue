@@ -9,6 +9,7 @@
         :to="{path: tag.path, query: tag.query, fullPath: tag.fullPath}"
         tag="span"
         class="tags-view-item"
+        :style="TagTheme(tag)"
         @click.middle.native="closeSelectedTag(tag)"
         @contextmenu.prevent.native="openMenu(tag, $event)"
       >
@@ -35,6 +36,7 @@
 import path from "path";
 import { Component, Vue, Watch } from "vue-property-decorator";
 import VueRouter, { Route, RouteConfig, RouteRecord } from "vue-router";
+import { SettingsModule } from "@/stroe/module/setting";
 import { PermissionModule } from "@/stroe/module/permission";
 import { TagsViewModule, ITagsView } from "@/stroe/module/tagviews";
 import ScrollPanel from "./ScrollPanel.vue";
@@ -122,6 +124,22 @@ export default class extends Vue {
       TagsViewModule.addView(this.$route);
     }
     return false;
+  }
+  /**
+   *
+   */
+  private TagTheme(tag: ITagsView) {
+    if (this.isActive(tag)) {
+      return {
+        "background-color": SettingsModule.theme,
+        "border-color": SettingsModule.theme
+      };
+    } else {
+      return {
+        "background-color": "#fff",
+        "border-color": "#d8dce5"
+      };
+    }
   }
   /**
    * 当前tag添加标识

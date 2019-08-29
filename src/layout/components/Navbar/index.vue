@@ -15,7 +15,7 @@
       </template>
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
-          <i class="material-icons icon-x3-big clr-primary">face</i>
+          <i class="material-icons icon-x3-big" :style="currentTheme">account_box</i>
           <i
             class="material-icons icon-x1"
             style="position:absolute;bottom:6px;right:-15px"
@@ -37,6 +37,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { AppModule } from "@/stroe/module/app";
+import { SettingsModule } from "@/stroe/module/setting";
 import Hamburger from "@/components/Hamburger/index.vue";
 import Breadcrumb from "@/components/Breadcrumb/index.vue";
 import Screentfull from "@/components/Screenfull/index.vue";
@@ -58,6 +59,12 @@ export default class extends Vue {
   }
   get device() {
     return AppModule.device.toString();
+  }
+
+  get currentTheme() {
+    return {
+      color: SettingsModule.theme
+    };
   }
 
   private toggleSideBar() {

@@ -18,7 +18,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 })
 export default class extends Vue {
   @Prop({ required: true }) private collapse!: boolean;
-  private title: string = "Vue Typescript";
+  private title: string = "智汇教育管理平台";
 }
 </script>
 <style lang="scss" scoped>
@@ -57,7 +57,7 @@ export default class extends Vue {
       color: #fff;
       font-weight: 600;
       line-height: 50px;
-      font-size: 14px;
+      font-size: 18px;
       font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
       vertical-align: middle;
     }

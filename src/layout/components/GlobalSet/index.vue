@@ -5,7 +5,7 @@
 
       <div class="drawer-item">
         <span>{{ $t('settings.theme') }}</span>
-        <theme-config
+        <theme-picker
           style="float: right;height: 26px;margin: -3px 8px 0 0;"
           @change="themeChange"
         />
@@ -36,11 +36,11 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { SettingsModule } from "@/stroe/module/setting";
-import ThemeConfig from "@/components/ThemeConfig/index.vue";
+import ThemePicker from "@/components/ThemePicker/index.vue";
 @Component({
   name: "GlobalSet",
   components: {
-    ThemeConfig
+    ThemePicker
   }
 })
 export default class extends Vue {

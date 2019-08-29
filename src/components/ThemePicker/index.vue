@@ -6,35 +6,38 @@
     popper-class="theme-picker-dropdown"
   />
 </template>
+
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import { SettingsModule } from "@/stroe/module/setting";
 
-const version = require("element-ui/package.json").version; // 获取 ele-ui 的版本
-const ORIGINAL_THEME = "#409EFF"; //默认颜色
+const version = require("element-ui/package.json").version; // element-ui version from node_modules
+const ORIGINAL_THEME = "#409EFF"; // default color
 
 @Component({
-  name: "ThemeConfig"
+  name: "ThemePicker"
 })
 export default class extends Vue {
-  private chalk = "";
+  private chalk = ""; // The content of theme-chalk css
   private theme = "";
 
   get defaultTheme() {
     return SettingsModule.theme;
   }
+
   @Watch("defaultTheme", { immediate: true })
   private onDefaultThemeChange(value: string) {
     this.theme = value;
   }
+
   @Watch("theme")
   private async onThemeChange(value: string) {
-    if (value) return;
+    if (!value) return;
     const oldValue = this.chalk ? this.theme : ORIGINAL_THEME;
     const themeCluster = this.getThemeCluster(value.replace("#", ""));
     const originalCluster = this.getThemeCluster(oldValue.replace("#", ""));
     const message = this.$message({
-      message: "Compiling the theme",
+      message: "  Compiling the theme",
       customClass: "theme-message",
       type: "success",
       duration: 0,
@@ -56,6 +59,7 @@ export default class extends Vue {
           originalCluster,
           themeCluster
         );
+
         let styleTag = document.getElementById(id);
         if (!styleTag) {
           styleTag = document.createElement("style");
@@ -65,9 +69,9 @@ export default class extends Vue {
         styleTag.innerText = newStyle;
       };
     };
-
     const chalkHandler = getHandler("chalk", "chalk-style");
     chalkHandler();
+
     let styles: HTMLElement[] = [].slice.call(
       document.querySelectorAll("style")
     );
@@ -90,9 +94,7 @@ export default class extends Vue {
     this.$emit("change", value);
     message.close();
   }
-  /**
-   * 更新样式
-   */
+
   private updateStyle(
     style: string,
     oldCluster: string[],
@@ -103,38 +105,6 @@ export default class extends Vue {
       newStyle = newStyle.replace(new RegExp(color, "ig"), newCluster[index]);
     });
     return newStyle;
-  }
-  private getThemeCluster(theme: string) {
-    const tintColor = (color: string, opacity: number) => {
-      let red = parseInt(color.slice(0, 2), 16);
-      let green = parseInt(color.slice(2, 4), 16);
-      let blue = parseInt(color.slice(4, 6), 16);
-      if (opacity === 0) {
-        // when primary color is in its rgb space
-        return [red, green, blue].join(",");
-      } else {
-        red += Math.round(opacity * (255 - red));
-        green += Math.round(opacity * (255 - green));
-        blue += Math.round(opacity * (255 - blue));
-        return `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
-      }
-    };
-
-    const shadeColor = (color: string, opacity: number) => {
-      let red = parseInt(color.slice(0, 2), 16);
-      let green = parseInt(color.slice(2, 4), 16);
-      let blue = parseInt(color.slice(4, 6), 16);
-      red = Math.round((1 - opacity) * red);
-      green = Math.round((1 - opacity) * green);
-      blue = Math.round((1 - opacity) * blue);
-      return `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
-    };
-    const clusters = [theme];
-    for (let i = 0; i <= 9; i++) {
-      clusters.push(tintColor(theme, Number((i / 10).toFixed(2))));
-    }
-    clusters.push(shadeColor(theme, 0.1));
-    return clusters;
   }
 
   private getCSSString(url: string, variable: string) {
@@ -152,6 +122,40 @@ export default class extends Vue {
       xhr.open("GET", url);
       xhr.send();
     });
+  }
+
+  private getThemeCluster(theme: string) {
+    const tintColor = (color: string, tint: number) => {
+      let red = parseInt(color.slice(0, 2), 16);
+      let green = parseInt(color.slice(2, 4), 16);
+      let blue = parseInt(color.slice(4, 6), 16);
+      if (tint === 0) {
+        // when primary color is in its rgb space
+        return [red, green, blue].join(",");
+      } else {
+        red += Math.round(tint * (255 - red));
+        green += Math.round(tint * (255 - green));
+        blue += Math.round(tint * (255 - blue));
+        return `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
+      }
+    };
+
+    const shadeColor = (color: string, shade: number) => {
+      let red = parseInt(color.slice(0, 2), 16);
+      let green = parseInt(color.slice(2, 4), 16);
+      let blue = parseInt(color.slice(4, 6), 16);
+      red = Math.round((1 - shade) * red);
+      green = Math.round((1 - shade) * green);
+      blue = Math.round((1 - shade) * blue);
+      return `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
+    };
+
+    const clusters = [theme];
+    for (let i = 0; i <= 9; i++) {
+      clusters.push(tintColor(theme, Number((i / 10).toFixed(2))));
+    }
+    clusters.push(shadeColor(theme, 0.1));
+    return clusters;
   }
 }
 </script>
@@ -172,5 +176,3 @@ export default class extends Vue {
   display: none;
 }
 </style>
-
-
