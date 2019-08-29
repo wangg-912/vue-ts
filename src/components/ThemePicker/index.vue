@@ -37,7 +37,7 @@ export default class extends Vue {
     const themeCluster = this.getThemeCluster(value.replace("#", ""));
     const originalCluster = this.getThemeCluster(oldValue.replace("#", ""));
     const message = this.$message({
-      message: "  Compiling the theme",
+      message: "正在切换主题,请稍候...",
       customClass: "theme-message",
       type: "success",
       duration: 0,
