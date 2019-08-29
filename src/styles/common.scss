@@ -1,5 +1,36 @@
 // cover some element styles
 
+/*滚动条样式，仅支持webkit内核浏览器*/
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+*::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+
+*::-webkit-scrollbar-track {
+    background: #e2e2e2;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #9a9a9b;
+}
+
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+
+}
+
+*::-webkit-scrollbar-corner,
+*::-webkit-scrollbar-button {
+    background: #fff;
+}
+
+
 .el-breadcrumb__inner,
 .el-breadcrumb__inner a {
     font-weight: 400 !important;
