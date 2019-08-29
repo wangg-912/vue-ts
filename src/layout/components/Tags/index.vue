@@ -80,6 +80,8 @@ export default class extends Vue {
   }
   /**
    * 过滤固定tag
+   * @param routes:interface
+   * @returns return:object
    */
   private filterAffixTags(routes: RouteConfig[], basePath = "/") {
     let tags: ITagsView[] = [];
@@ -117,6 +119,7 @@ export default class extends Vue {
   }
   /**
    * 新建tag
+   * @returns return:boolean
    */
   private addTags() {
     const { name } = this.$route;
@@ -126,7 +129,9 @@ export default class extends Vue {
     return false;
   }
   /**
-   *
+   * 主题色同步逻辑
+   * @param tag:interface
+   * @returns styles:object
    */
   private TagTheme(tag: ITagsView) {
     if (this.isActive(tag)) {
@@ -143,6 +148,8 @@ export default class extends Vue {
   }
   /**
    * 当前tag添加标识
+   * @param route:interface
+   * @returns return:boolean
    */
   private isActive(route: ITagsView) {
     return route.path == this.$route.path;

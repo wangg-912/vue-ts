@@ -1,3 +1,10 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-01 10:13:08
+ * @LastEditTime: 2019-08-29 14:22:33
+ * @LastEditors: Please set LastEditors
+ -->
 <template>
   <a v-if="isExternal(to)" :href="to" target="_blank" rel="noopener">
     <slot />
