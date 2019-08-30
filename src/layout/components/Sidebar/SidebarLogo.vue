@@ -13,12 +13,16 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import { SettingsModule } from "@/stroe/module/setting";
 @Component({
   name: "SidebarLogo"
 })
 export default class extends Vue {
   @Prop({ required: true }) private collapse!: boolean;
-  private title: string = "智汇教育管理平台";
+
+  get title() {
+    return SettingsModule.title;
+  }
 }
 </script>
 <style lang="scss" scoped>

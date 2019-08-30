@@ -1,10 +1,18 @@
+/*
+ * @Description: 功能描述
+ * @Author: 作者
+ * @Github: https: //github.com/xxx
+ * @Date: 2019-07-27 17:38:00
+ * @LastEditors: 最后编辑人
+ * @LastEditTime: 2019-08-30 11:10:23
+ */
 import Vue from "vue";
-import Router, { RouteConfig } from "vue-router";
+import Router, {RouteConfig} from "vue-router";
 import Layout from "@/layout/index.vue";
 
 Vue.use(Router);
 
-export const constantRoutes: RouteConfig[] = [
+export const constantRoutes : RouteConfig[] = [
   {
     path: "/",
     component: Layout,
@@ -12,7 +20,7 @@ export const constantRoutes: RouteConfig[] = [
     children: [
       {
         path: "home",
-        component: () => import("@/views/Home.vue"),
+        component: () => import ("@/views/Home.vue"),
         name: "home",
         meta: {
           title: "首页",
@@ -21,8 +29,7 @@ export const constantRoutes: RouteConfig[] = [
         }
       }
     ]
-  },
-  {
+  }, {
     path: "/about",
     component: Layout,
     redirect: "/about/index",
@@ -33,16 +40,15 @@ export const constantRoutes: RouteConfig[] = [
     children: [
       {
         path: "index",
-        component: () => import("@/views/About.vue"),
+        component: () => import ("@/views/About.vue"),
         name: "index",
         meta: {
           title: "菜单一",
           icon: "account_circle"
         }
-      },
-      {
+      }, {
         path: "lianxi",
-        component: () => import("@/views/About.vue"),
+        component: () => import ("@/views/About.vue"),
         name: "lianxi",
         meta: {
           title: "菜单二",
@@ -50,32 +56,31 @@ export const constantRoutes: RouteConfig[] = [
         }
       }
     ]
-  },
-  {
+  }, {
     path: "/404",
-    component: () => import("@/views/404/Page404.vue"),
+    component: () => import ("@/views/404/Page404.vue"),
     meta: {
       hidden: true
     }
   }
 ];
 
-export const asyncRoutes: RouteConfig[] = [];
+export const asyncRoutes : RouteConfig[] = [];
 
-const createRouter = () =>
-  new Router({
-    mode: "history", // Disabled due to Github Pages doesn't support this,
-    // enable this if you need.
-    scrollBehavior: (to, from, savedPosition) => {
-      if (savedPosition) {
-        return savedPosition;
-      } else {
-        return { x: 0, y: 0 };
-      }
-    },
-    base: process.env.BASE_URL,
-    routes: constantRoutes
-  });
+function ss() {}
+const createRouter = () => new Router({
+  mode: "history", // Disabled due to Github Pages doesn't support this,
+  // enable this if you need.
+  scrollBehavior: (to, from, savedPosition) => {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return {x: 0, y: 0};
+    }
+  },
+  base: process.env.BASE_URL,
+  routes: constantRoutes
+});
 
 const router = createRouter();
 

@@ -1,3 +1,11 @@
+<!--
+ * @Description: 功能描述
+ * @Author: 作者
+ * @Github: https: //github.com/xxx
+ * @Date: 2019-08-06 10:22:23
+ * @LastEditors: 最后编辑人
+ * @LastEditTime: 2019-08-30 11:12:07
+ -->
 <template>
   <div class="tags-view-container">
     <scroll-panel ref="scrollPane" class="tags-view-wrapper">
@@ -78,11 +86,7 @@ export default class extends Vue {
     this.initTags();
     this.addTags();
   }
-  /**
-   * 过滤固定tag
-   * @param routes:interface
-   * @returns return:object
-   */
+
   private filterAffixTags(routes: RouteConfig[], basePath = "/") {
     let tags: ITagsView[] = [];
     routes.forEach(route => {

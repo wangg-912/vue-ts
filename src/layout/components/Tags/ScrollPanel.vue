@@ -1,3 +1,11 @@
+<!--
+ * @Description: 功能描述
+ * @Author: 作者
+ * @Github: https: //github.com/xxx
+ * @Date: 2019-08-06 13:42:00
+ * @LastEditors: 最后编辑人
+ * @LastEditTime: 2019-08-30 10:44:38
+ -->
 <template>
   <el-scrollbar
     ref="scrollContainer"
@@ -22,6 +30,7 @@ export default class extends Vue {
     const scrollWrapper = scrollConatiner.$refs.wrap as HTMLElement;
     scrollWrapper.scrollLeft = scrollWrapper.scrollLeft + eventDelta / 4;
   }
+
   moveToTarget(currentTag: HTMLElement) {
     const scrollContainer = this.$refs.scrollContainer as Vue;
     const container = scrollContainer.$el as HTMLElement; //tag 容器
