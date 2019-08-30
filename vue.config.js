@@ -1,11 +1,12 @@
 /**
- * author: wanggang
+ * @author wanggang
+ * @version 0.0.1
  */
 const path = require('path')
 const resolve = dir => {
     return path.join(__dirname, dir)
 }
-const name = 'Vue For TYypescript';
+const name = '智汇教育管理平台';
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production' ? '/ts/' : '/',
     lintOnSave: process.env.NODE_ENV === 'development',
